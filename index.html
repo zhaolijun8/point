@@ -1,0 +1,66 @@
+<!DOCTYPE  html>
+<html  lang="en">
+<head>
+<meta  charset="UTF-8">
+<title>打印demo</title>
+<script  src='http://localhost:8000/CLodopfuncs.js?name=CLODOPA'></script>
+<link  rel="stylesheet"  href="css/print_page.css">
+</head>
+<body>
+<div  id="print"  class="printStyle">
+<h1>新疆今年投资633亿元加强电力基础设施</h1>
+<p>新华社乌鲁木齐4月18日电（记者杜刚、刘兵）今年，新疆计划投资633亿元用于电力基础设施建设，其中火电项目和电网项目分别计划投资457亿元、176亿元。</p>
+　　<p>根据新疆日前发布的自治区2017年全社会固定资产投资任务落实工作方案，围绕昌吉—古泉±1100千伏特高压直流输电工程，总投资约500亿元的准东煤电基地配套外送电源项目，今年计划投资220亿元，由7个电源点组成，装机总容量1320万千瓦。其他火电项目主要集中在煤炭资源丰富的新疆北部和东部区域。</p>
+　　<p>国网新疆电力公司介绍，电网项目中，昌吉—古泉±1100千伏特高压直流输电工程（新疆段）作为“疆电外送”的第二条特高压输电工程，是今年建设的重点，全年计划完成投资28．83亿元。
+　　逐步增强的北疆电网还包括：伊犁—博州—乌苏—凤凰ＩＩ回750千伏输变电工程，五家渠750千伏输变电工程，吐鲁番—哈密750千伏线路改接工程等。</p>
+　　<p>南疆750千伏电网延伸补强工程是今年电网建设的另一重点。该工程由巴楚—莎车、莎车—和田、喀什—莎车750千伏输变电工程及配套工程组成，线路全长726千米，工程总投资36亿元，预计2019年上半年建成投运，使750千伏电网向南延伸至和田地区。</p>
+　　<p>此外，新疆还将围绕“电化新疆”，实施城市配电网工程，推进新一轮农村电网升级改造，加快风电清洁能源供暖示范项目和电动汽车充电基础设施建设。（完）</p>
+</div>
+<button  id="pointer">打印</button>
+<script>
+var  pointer  =  document.getElementById("pointer");
+var  print  =  document.getElementById("print").innerHTML;
+pointer.onclick  =  function(){
+alert("1");
+print_paper(print,  2);  //  打印
+}
+//type  1  预览  2打印
+function  print_paper(content,type){
+var  timestamp=new  Date().getTime();
+var  t  =  timestamp  +  Math.random();
+var  title  =  '打印'+t;
+try{
+LODOP=getCLodop();    
+}catch(e){
+console.log(e);
+}
+
+
+
+if(LODOP  ==  null  ||  (typeof(LODOP.VERSION)=="undefined")){
+jAlert('请安装LODOP\n'  +'下载地址：<a  href="'  +lodop_url+'">'+lodop_url+'</a>',"提示");
+return  false;
+}
+
+var  p_tyle="<style>"+print_style+"</style>";
+var  str_html=p_tyle+"<body>"+content+"</body>";
+LODOP.ADD_PRINT_HTM("1.5cm","1.3cm","RightMargin:1.3cm","BottomMargin:1.5cm",str_html);
+LODOP.ADD_PRINT_TEXT(1060,  370,  200,  22,  "第#页/共&页");
+        LODOP.SET_PRINT_STYLEA(2,  "ItemType",  2);
+        LODOP.SET_PRINT_STYLEA(2,  "HOrient",  1);
+        if(type  ==  1){
+          LODOP.PREVIEW();
+        }else  if(type  ==  2){
+        var  r  =  LODOP.PRINT();
+        return  r;
+        }
+        return  false;
+//LODOP.PRINT();
+
+}
+//  $.get("/css/print_page.css",  function(a)  {
+//  print_style  =  a
+//  });
+</script>
+</body>
+</html>
