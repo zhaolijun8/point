@@ -49,8 +49,8 @@ jAlert('请安装LODOP\n'  +'下载地址：<a  href="'  +lodop_url+'">'+lodop_u
 return  false;
 }
 
-// var  p_tyle='<style>*{margin:0;padding:0;}body{font-size:24px !important;font-family:"simkai";}.printStyle{margin-bottom:30px;}.printStyle h1{font-size:24px;margin-bottom:30px;}.printStyle p{line-height:24px;font-size:14px;border-bottom:1px solid #000;overflow:hidden;}.printStyle p span{width:50%;float:left;box-sizing:border-box;}.printStyle .title{width:90px;text-indent:4px;}p{text-indent:2em;line-height:34px;}</style>';
-var p_tyle='';
+var  p_tyle='<style>*{margin:0;padding:0;}body{font-size:24px !important;font-family:"KaiTi","simsun","SimHei","Microsoft YaHei";}.printStyle{margin-bottom:30px;}.printStyle h1{font-size:24px;margin-bottom:30px;}.printStyle p{line-height:24px;font-size:14px;border-bottom:1px solid #000;overflow:hidden;}.printStyle p span{width:50%;float:left;box-sizing:border-box;}.printStyle .title{width:90px;text-indent:4px;}p{text-indent:2em;line-height:34px;}</style>';
+// var p_tyle='';
         var  str_html=p_tyle+"<body>"+content+"</body>";
 LODOP.ADD_PRINT_HTM("1.5cm","1.3cm","RightMargin:1.3cm","BottomMargin:1.5cm",str_html);
 LODOP.ADD_PRINT_TEXT(1060,  370,  200,  22,  "第#页/共&页");
